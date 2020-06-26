@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component} from 'react';
 import './App.css';
+import Navigation from './Components/Navigation';
+import Orders from './Components/Orders';
+import Holdings from './Components/Holdings';
+import Position from './Components/Positions';
+import Funds from './Components/Funds';
+import Profile from './Components/Profile';
+import OrderStatus from './Components/OrderStatus';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+
+
+class App extends Component {
+
+
+
+  render () {
+    return (    
+      <Router>
+        <div className="App">
+          <Navigation/>
+          <Route path= "/" exact component= {Orders} />
+          <Route path= "/orders" component= {Orders}/>
+          <Route path= "/holdings" component={Holdings} />
+          <Route path= "/positions" component={Position} />
+          <Route path= "/funds" component= {Funds} />
+          <Route path= "/profile" component= {Profile} />
+          <Route path= "/orderstatus" component= {OrderStatus} />
+        </div>
+      </Router>
+    )
+  }
 }
 
-export default App;
+export default App
